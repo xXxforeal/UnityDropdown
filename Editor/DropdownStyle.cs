@@ -49,8 +49,13 @@
 
         private static GUIStyle _searchToolbarStyle;
 
+        #if UNITY_2023_2_OR_NEWER || UNITY_2021_3_28 || UNITY_2022_3_1_OR_NEWER
         public static GUIStyle SearchToolbarStyle =>
             _searchToolbarStyle ?? (_searchToolbarStyle = new GUIStyle(GUI.skin.FindStyle("ToolbarSeachTextField")));
+        #else
+        public static GUIStyle SearchToolbarStyle =>
+            _searchToolbarStyle ?? (_searchToolbarStyle = new GUIStyle(GUI.skin.FindStyle("ToolbarSeachTextField")));
+        #endif
 
         private static readonly Color HighlightedColorDarkSkin = new Color(1f, 1f, 1f, 0.028f);
         private static readonly Color HighlightedColorLightSkin = new Color(1f, 1f, 1f, 0.3f);
